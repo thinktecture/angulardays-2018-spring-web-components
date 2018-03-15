@@ -8,6 +8,8 @@
     "static-server": "cd WebComponentsPolymer && cd Polymer && static -H '{\"Access-Control-Allow-Origin\": \"*\"}'",
     "build": "ng build",
     "build-elements": "ng build --aot --prod --bo --vendor-chunk=false --common-chunk=false --app \"Elements\" --base-href=\".\"",
+    "start-elements": "npm run build-elements && npm run static-server-elements",
+    "static-server-elements": "cd distAngularElement && static",
     "polymer": "cd WebComponentsPolymer && cd Polymer && polymer serve",
     "test": "ng test",
     "lint": "ng lint",
