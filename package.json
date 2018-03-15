@@ -6,8 +6,9 @@
     "ng": "ng",
     "start": "concurrently \"ng serve\" \"npm run static-server\"",
     "static-server": "cd WebComponentsPolymer && cd Polymer && static -H '{\"Access-Control-Allow-Origin\": \"*\"}'",
-    "polymer": "cd WebComponentsPolymer && cd Polymer && polymer serve",
     "build": "ng build",
+    "build-elements": "ng build --aot --prod --bo --vendor-chunk=false --common-chunk=false --app \"Elements\" --base-href=\".\"",
+    "polymer": "cd WebComponentsPolymer && cd Polymer && polymer serve",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
