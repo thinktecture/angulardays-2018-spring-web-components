@@ -1,6 +1,11 @@
 <h1>Touch Controls</h1>
 
+<div>
+  <a [routerLink]="['/home']">Home</a>
+  | <a [routerLink]="['/controls/numberPad']">Number Pad</a>
+  | <a [routerLink]="['/shadowControls/numberPad']">Number Pad (Shadow)</a>
+  | <a [routerLink]="['/webComponents/numberPad']">Number Pad (Polymer)</a>
+  | <a [routerLink]="['/slots']">Slots</a>
+</div>
 
-<touch-number-pad></touch-number-pad>
-<touch-controls-number-pad></touch-controls-number-pad>
-<touch-controls-number-pad [max]="5" [min]="-3">age</touch-controls-number-pad>
+<router-outlet></router-outlet>

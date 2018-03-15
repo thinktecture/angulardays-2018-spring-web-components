@@ -1,0 +1,11 @@
+<h2>Number Pad</h2>
+
+<form [formGroup]="formGroup">
+  <touch-controls-number-pad infoText="km/h" formControlName="kmh"></touch-controls-number-pad>
+  <touch-controls-number-pad-slot [min]="0" formControlName="age">age</touch-controls-number-pad-slot>
+  <touch-controls-number-pad [min]="-5" [max]="15" [step]="5" formControlName="nothing"></touch-controls-number-pad>
+  <touch-controls-number-pad formControlName="notZero"></touch-controls-number-pad>
+</form>
+
+<h3>Form Value</h3>
+{{ formGroup.value | json }}
