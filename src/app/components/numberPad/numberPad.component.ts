@@ -22,7 +22,7 @@ export class NumberPadComponent implements ControlValueAccessor {
   @Input()
   public max = Infinity;
 
-  public currentValue: number;
+  public currentValue = 0;
   public isDecrementMouseDown: boolean;
   public isIncrementMouseDown: boolean;
 
@@ -69,7 +69,7 @@ export class NumberPadComponent implements ControlValueAccessor {
 
     this.currentValue += this.step;
     this.checkMinMax();
-    this._onChange(this.currentValue);
+    this.doOnChange(this.currentValue);
 
     this.setTimeout(() => this.increment());
   }
@@ -81,7 +81,7 @@ export class NumberPadComponent implements ControlValueAccessor {
 
     this.currentValue -= this.step;
     this.checkMinMax();
-    this._onChange(this.currentValue);
+    this.doOnChange(this.currentValue);
 
     this.setTimeout(() => this.decrement());
   }
@@ -108,6 +108,12 @@ export class NumberPadComponent implements ControlValueAccessor {
 
     if (this.currentValue < this.min) {
       this.currentValue = this.min;
+    }
+  }
+
+  private doOnChange(value: any): void {
+    if (this._onChange) {
+      this._onChange(value);
     }
   }
 }

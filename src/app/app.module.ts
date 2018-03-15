@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NumberPadComponent } from './components/numberPad/numberPad.component';
 import { NumberPadContainerComponent } from './components/numberPad/numberPadContainer.component';
 import { NumberPadSlotComponent } from './components/numberPad/numberPadSlot.component';
+import { NumberPadAngularElementContainerComponent } from './components/numberPadAngularElement/numberPadAngularElementContainer.component';
 import { NumberPadContainerPolymerComponent } from './components/numberPadPolymer/numberPadContainerPolymer.component';
 import { NumberPadContainerShadowComponent } from './components/numberPadShadow/numberPadContainerShadow.component';
 import { NumberPadShadowComponent } from './components/numberPadShadow/numberPadShadow.component';
@@ -30,6 +31,7 @@ import { SlotContainerComponent } from './components/slots/slotContainer.compone
     NumberPadSlotComponent,
     NumberPadShadowSlotComponent,
     SlotContainerComponent,
+    NumberPadAngularElementContainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,7 @@ import { SlotContainerComponent } from './components/slots/slotContainer.compone
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [NumberPadShadowSlotComponent, NumberPadShadowComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
   ],
