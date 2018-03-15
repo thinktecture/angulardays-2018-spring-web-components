@@ -1,0 +1,10 @@
+body {
+  user-select: none;
+}
+
+// This is bad, and you should feel bad!
+#minus-area {
+  path {
+    fill: yellow !important;
+  }
+}

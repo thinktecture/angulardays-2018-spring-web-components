@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:cc="http://creativecommons.org/ns#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  xmlns="http://www.w3.org/2000/svg"
+  width="210mm"
+  height="297mm"
+  viewBox="0 0 744.09448819 1052.3622047"
+  id="svg2"
+  version="1.1"
+  inkscape:version="0.91 r13725"
+  sodipodi:docname="RadialPicker2.svg">
+  <defs
+    id="defs4"/>
+  <sodipodi:namedview
+    id="base"
+    pagecolor="#ffffff"
+    bordercolor="#666666"
+    borderopacity="1.0"
+    inkscape:pageopacity="0.0"
+    inkscape:pageshadow="2"
+    inkscape:zoom="1"
+    inkscape:cx="486.68898"
+    inkscape:cy="934.94001"
+    inkscape:document-units="px"
+    inkscape:current-layer="layer1"
+    showgrid="false"
+    inkscape:window-width="1920"
+    inkscape:window-height="1017"
+    inkscape:window-x="-8"
+    inkscape:window-y="-8"
+    inkscape:window-maximized="1"/>
+  <metadata
+    id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+        rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+          rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+    inkscape:label="Ebene 1"
+    inkscape:groupmode="layer"
+    id="layer1">
+    <circle
+      style="opacity:1;fill:none;fill-opacity:1;stroke:#f1daea;stroke-width:28;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+      id="path4136"
+      cx="138.35718"
+      cy="138.14795"
+      r="124"/>
+    <circle
+      style="opacity:1;fill:none;fill-opacity:1;stroke:#d9add1;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+      id="path4136-4"
+      cx="138.35718"
+      cy="138.14795"
+      r="72"/>
+    <g
+      id="g4149"
+      transform="translate(-67,-58)">
+      <circle
+        r="20"
+        style="fill:none;stroke:#82397a;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none"
+        cy="196.14795"
+        cx="205.35718"
+        id="ellipse4192"/>
+      <path
+        style="fill:#82397a"
+        inkscape:connector-curvature="0"
+        id="path1"
+        d="m 202.59227,189.45945 3.05906,0 -5.52983,5.59967 14.64814,0 0,2.17765 -14.64814,0 5.52983,5.59966 -3.05906,0 -5.11802,-5.10191 -1.52951,-1.55547 z"/>
+    </g>
+  </g>
+</svg>

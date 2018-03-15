@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- Load polyfills -->
+  <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+  <script>
+    window.addEventListener('WebComponentsReady', function () {
+
+      class NumberPad extends HTMLElement {
+
+        constructor() {
+          super();
+          this.attachShadow({ mode: 'open' });
+        }
+
+        connectedCallback() {
+          this.render();
+        }
+
+        attributeChangedCallback(attr, oldValue, newValue) {
+          this.refresh();
+        }
+
+        render() {
+          var t = document.querySelector('#template');
+          var clone = document.importNode(t.content, true);
+          this.shadowRoot.appendChild(clone);
+
+          this.incrementButton.addEventListener('click', () => {
+            if (this.value < this.maximum) {
+              this.value += 1;
+            }
+          });
+
+          this.decrementButton.addEventListener('click', () => {
+            if (this.value > this.minimum) {
+              this.value -= 1;
+            }
+          });
+          this.refresh();
+        }
+
+        get incrementButton() {
+          return this.shadowRoot.querySelector('#increment-button');
+        }
+
+        get decrementButton() {
+          return this.shadowRoot.querySelector('#decrement-button');
+        }
+
+        get label() {
+          return this.shadowRoot.querySelector('#label');
+        }
+
+        get value() {
+          return JSON.parse(this.getAttribute('value'));
+        }
+
+        set value(value) {
+          this.setAttribute('value', JSON.stringify(value));
+        }
+
+        get minimum() {
+          return JSON.parse(this.getAttribute('minimum'));
+        }
+
+        set minimum(value) {
+          this.setAttribute('minimum', JSON.stringify(value));
+        }
+
+        get maximum() {
+          return JSON.parse(this.getAttribute('maximum'));
+        }
+
+        set maximum(value) {
+          this.setAttribute('maximum', JSON.stringify(value));
+        }
+
+        static get observedAttributes() {
+          return ['value', 'minimum', 'maximum'];
+        }
+
+        refresh() {
+          if (this.label != null) {
+            this.label.innerHTML = Math.min(Math.max(this.value, this.minimum), this.maximum);
+          }
+        }
+      }
+
+      customElements.define('number-pad', NumberPad);
+    });
+  </script>
+</head>
+
+<body>
+  <template id="template">
+    <style>
+      :host {
+        display: block;
+        width: fit-content;
+        font-size: 30px;
+        background: #78909c;
+      }
+
+      #frame {
+        display: block;
+        width: 88px;
+        font-size: 30px;
+        background: #78909c;
+        margin: 1px;
+        padding: 14px;
+      }
+
+      span {
+        text-align: center;
+        background: white;
+        font-size: 30px;
+        display: table;
+        margin: auto;
+      }
+
+      button {
+        font-size: 30px;
+        width: 40px;
+        background: #263238;
+        border: 0px;
+        color: white;
+        cursor: pointer;
+        padding: 0px;
+        margin-top: 10px;
+      }
+    </style>
+    <div id="frame">
+			<span style="display: block; width=84px;">
+				<span id="label"></span>
+			</span>
+      <button id="increment-button">+</button>
+      <button id="decrement-button">-</button>
+    </div>
+  </template>
+
+  <number-pad value="3" minimum="1" maximum="5"></number-pad>
+
+</body>
+</html>

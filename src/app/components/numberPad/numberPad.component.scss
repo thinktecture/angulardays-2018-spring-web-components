@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+#minus-area, #plus-area {
+  &:hover {
+    path {
+      fill: #800080 !important;
+      fill-opacity: 0.5 !important;
+    }
+  }
+}

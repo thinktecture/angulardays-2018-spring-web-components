@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="touch-spinner.html">
+  <link rel="import" href="touch-number-pad.html">
+  <link rel="import" href="touch-radial-picker.html">
+</head>
+<style>
+  body {
+    background-color: #FAFAFA;
+    font-family: "Roboto", "Noto", "Segoe UI Semibold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  h1 {
+    color: #21212f;
+    letter-spacing: -1px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  h2 {
+    margin-left: 20px;
+    color: #37474F;
+    letter-spacing: -1px;
+    font-size: 26px;
+    font-weight: semi-condensed;
+  }
+</style>
+<body>
+
+  <header>
+    <h1>TOUCH CONTROLS DEMO</h1>
+    <h2 style="margin-left: 55px">SPINNER</h2>
+  </header>
+
+  <touch-spinner maximum=100 value=10 text="Employees"></touch-spinner>
+
+  <header>
+    <h2>NUMBER PAD</h2>
+  </header>
+
+  <touch-number-pad maximum=100 value=10 text="Employees"></touch-number-pad>
+
+  <header>
+    <h2>RADIAL PICKER</h2>
+  </header>
+
+  <touch-radial-picker maximum=200 value=10 text="Employees"></touch-radial-picker>
+
+  <!--
+    <div style="color: rgba(0, 0, 0, 0.870588); transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; box-sizing: border-box; font-family: Roboto, sans-serif; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); box-shadow: rgba(0, 0, 0, 0.247059) 0px 14px 45px, rgba(0, 0, 0, 0.219608) 0px 10px 18px; border-radius: 50%; height: 100px; width: 100px; margin: 20px; text-align: center; display: inline-block; background-color: rgb(255, 255, 255);"></div>
+    -->
+</body>
+</html>

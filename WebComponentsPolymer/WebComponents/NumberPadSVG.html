@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- Load polyfills -->
+  <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+  <script>
+    window.addEventListener('WebComponentsReady', function () {
+
+      class NumberPad extends HTMLElement {
+
+        constructor() {
+          super();
+          this.attachShadow({ mode: 'open' });
+        }
+
+        connectedCallback() {
+          this.render();
+        }
+
+        static get observedAttributes() {
+          return ['value', 'minimum', 'maximum'];
+        }
+
+        attributeChangedCallback(attr, oldValue, newValue) {
+          this.refresh();
+        }
+
+        get incrementButton() {
+          return this.shadowRoot.querySelector('#plus-area');
+        }
+
+        get decrementButton() {
+          return this.shadowRoot.querySelector('#minus-area');
+        }
+
+        get incrementPad() {
+          return this.shadowRoot.querySelector('#plus-pad');
+        }
+
+        get decrementPad() {
+          return this.shadowRoot.querySelector('#minus-pad');
+        }
+
+        get label() {
+          return this.shadowRoot.querySelector('#item-text');
+        }
+
+        get title() {
+          return this.shadowRoot.querySelector('#sub-text');
+        }
+
+        get value() {
+          return JSON.parse(this.getAttribute('value'));
+        }
+
+        set value(value) {
+          this.setAttribute('value', JSON.stringify(value));
+        }
+
+        get minimum() {
+          return JSON.parse(this.getAttribute('minimum'));
+        }
+
+        set minimum(value) {
+          this.setAttribute('minimum', JSON.stringify(value));
+        }
+
+        get maximum() {
+          return JSON.parse(this.getAttribute('maximum'));
+        }
+
+        set maximum(value) {
+          this.setAttribute('maximum', JSON.stringify(value));
+        }
+
+        get text() {
+          return this.getAttribute('text') == null ? 'Items' : this.getAttribute('text');
+        }
+
+        set text(value) {
+          this.setAttribute('text', value);
+        }
+
+        render() {
+          var t = document.querySelector('#template');
+          var clone = document.importNode(t.content, true);
+          this.shadowRoot.appendChild(clone);
+
+          this.incrementButton.addEventListener('mouseover', a => this.mouseOver(a));
+          this.decrementButton.addEventListener('mouseover', a => this.mouseOver(a));
+          this.incrementButton.addEventListener('mouseout', a => this.mouseOut(a));
+          this.decrementButton.addEventListener('mouseout', a => this.mouseOut(a));
+          this.incrementButton.addEventListener('mousedown', a => this.mouseDown(a));
+          this.decrementButton.addEventListener('mousedown', a => this.mouseDown(a));
+          this.incrementButton.addEventListener('mouseup', a => this.mouseUp(a));
+          this.decrementButton.addEventListener('mouseup', a => this.mouseUp(a));
+
+          if (this.title != null) {
+            this.title.innerHTML = this.text;
+          }
+
+          this.refresh();
+        }
+
+        refresh() {
+          if (this.label != null) {
+            this.label.innerHTML = Math.min(Math.max(this.value, this.minimum), this.maximum);
+          }
+        }
+
+        mouseOver(args) {
+          this.getTarget(args).setAttribute('style', 'fill:#800080;fill-opacity:0.5');
+        }
+
+        mouseOut(args) {
+          this.getTarget(args).setAttribute('style', 'fill:#bfc5cc;fill-opacity:1');
+        }
+
+        mouseDown(args) {
+          this.getTarget(args).setAttribute('style', 'fill:#800080;fill-opacity:1');
+          this.isMouseDown = true;
+          this.updateValue(args.currentTarget);
+        }
+
+        updateValue(target) {
+          if (!this.isMouseDown) return;
+
+          if (target == this.incrementButton && this.value < this.maximum) {
+            this.value++;
+          }
+          else if (target == this.decrementButton && this.value > this.minimum) {
+            this.value--;
+          }
+
+          setTimeout(() => this.updateValue(target), 200);
+        }
+
+        mouseUp(args) {
+          this.getTarget(args).setAttribute('style', 'fill:#800080;fill-opacity:0.5');
+          this.isMouseDown = false;
+        }
+
+        getTarget(args) {
+          return args.currentTarget == this.incrementButton ? this.incrementPad : this.decrementPad;
+        }
+      }
+
+      customElements.define('number-pad', NumberPad);
+    });
+  </script>
+</head>
+
+<body>
+  <template id="template">
+    <style type="text/css">
+      ::selection {
+        background: none;
+      }
+
+      ::-moz-selection {
+        background: none;
+      }
+
+      text {
+        pointer-events: none;
+      }
+    </style>
+
+    <div class="content-wrapper">
+      <content>
+        <svg id="svg2" width="210" height="210"
+             transform="scale(1)">
+          <g id="layer1">
+            <circle
+              style="fill:#bfc5cc;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:10px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+              id="path4142-7"
+              cx="80"
+              cy="80"
+              r="80">
+          </g>
+          <path
+            style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+            type="arc"
+            cx="80"
+            cy="80"
+            rx="65"
+            ry="65"
+            start="2.7246043"
+            end="0.40454034"
+            d="M 20.569666,106.32557 A 65,65 0 0 1 39.802001,28.920446 65,65 0 0 1 119.55906,28.424031 65,65 0 0 1 139.75342,105.58376"
+            open="true"></path>
+          <g id="plus-area">
+            <path id="plus-pad"
+                  d="M 80.278437,159.9113 A 80,80 0 0 1 4.08031,105.12447 l 76.198127,0 z"
+                  style="fill:#bfc5cc;fill-opacity:1"/>
+            <path id="path4156-1"
+                  d="m 79,104 0,57"
+                  style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+            <g id="plus-sign">
+              <rect
+                style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                width="21.338621"
+                height="4"
+                x="44.156067"
+                y="124.99451"/>
+              <path
+                style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+                d="m 54.825375,136.3622 0,-19.68787"></path>
+            </g>
+          </g>
+          <g id="minus-area">
+            <path id="minus-pad"
+                  d="m 80.120938,159.9113 a 80,80 0 0 0 76.198122,-54.78683 l -76.198122,0 z"
+                  style="fill:#bfc5cc;fill-opacity:1"/>
+            <rect id="minus-sign"
+                  y="124.99451"
+                  x="95.505318"
+                  height="4"
+                  width="21.338621"
+                  style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"></rect>
+          </g>
+          <text id="item-text"
+				   xml:space="preserve"
+				   style="font-style:normal;font-weight:bold;font-size:28px;line-height:125%;font-family:Roboto, Noto, 'Segoe UI Semibold', 'Helvetica Neue', Helvetica, Arial, sans-serif;letter-spacing:0px;word-spacing:0px;fill:#800080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+				   x="80"
+				   y="66.362206"
+				   text="200"
+				   text-anchor="middle"></text>
+				<text id="sub-text"
+				   xml:space="preserve"
+				   style="font-style:normal;font-weight:bold;font-size:16px;line-height:125%;font-family:Roboto, Noto, 'Segoe UI Semibold', 'Helvetica Neue', Helvetica, Arial, sans-serif;letter-spacing:0px;word-spacing:0px;fill:#800080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+				   x="80"
+				   y="88.362206"
+				   text="Items"
+				   text-anchor="middle"></text>
+          </g>
+        </svg>
+      </content>
+    </div>
+  </template>
+
+  <number-pad value="3" minimum="1" maximum="500" text="Employees"></number-pad>
+
+</body>
+</html>
