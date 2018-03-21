@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `npm start` to start both dev servers.
+Run `npm install` and then `npm start` to start both dev servers.
 The first serves the static folder `WebComponentyPolymer/WebComponents`.
 The second is the default Angular CLI development server.
 To see the sample code running, go to `http://localhost:4200`. 
