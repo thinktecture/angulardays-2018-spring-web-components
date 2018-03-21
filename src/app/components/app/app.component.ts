@@ -1,5 +1,5 @@
 import { Component, Injector } from '@angular/core';
-import { createCustomElement } from '../../../@angular/elements';
+import { createCustomElement } from '@angular/elements';
 import { NumberPadShadowComponent } from '../numberPadShadow/numberPadShadow.component';
 import { NumberPadShadowSlotComponent } from '../numberPadShadow/numberPadShadowSlot.component';
 

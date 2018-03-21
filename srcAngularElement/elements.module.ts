@@ -1,6 +1,6 @@
 import { Injector, NgModule } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
-import { createCustomElement } from '../src/@angular/elements';
 import { NumberPadComponent } from '../src/app/components/numberPad/numberPad.component';
 import { NumberPadShadowComponent } from '../src/app/components/numberPadShadow/numberPadShadow.component';
 import { NumberPadShadowSlotComponent } from '../src/app/components/numberPadShadow/numberPadShadowSlot.component';
