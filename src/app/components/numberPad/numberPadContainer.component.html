@@ -2,9 +2,7 @@
 
 <form [formGroup]="formGroup">
   <touch-controls-number-pad infoText="km/h" formControlName="kmh"></touch-controls-number-pad>
-  <touch-controls-number-pad-slot [foobar]="0" formControlName="age">
-    <ng-container class="foo">bar</ng-container>
-  </touch-controls-number-pad-slot>
+  <touch-controls-number-pad-slot [foobar]="0" formControlName="age">age</touch-controls-number-pad-slot>
   <touch-controls-number-pad [min]="-5" [max]="15" [step]="5" formControlName="nothing"></touch-controls-number-pad>
   <touch-controls-number-pad formControlName="notZero"></touch-controls-number-pad>
 </form>
